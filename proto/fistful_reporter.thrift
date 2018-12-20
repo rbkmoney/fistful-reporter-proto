@@ -21,7 +21,7 @@ exception DatasetTooBig {
 }
 
 exception PartyNotFound {}
-exception ShopNotFound {}
+exception ContractNotFound {}
 exception ReportNotFound {}
 exception FileNotFound {}
 
@@ -47,7 +47,7 @@ struct ReportTimeRange {
 * report_id - уникальный идентификатор отчета
 * time_range - за какой период данный отчет
 * report_type - тип отчета
-* file_ids - id файлов данного отчета (к примеру сам отчет и его подпись)
+* file_ids - id файлов данного отчета
 */
 struct Report {
     1: required ReportID report_id
@@ -66,12 +66,14 @@ enum ReportStatus {
     pending
     // создан
     created
+    // отменен
+    canceled
 }
 
 service Reporting {
 
   /**
-  * Получить список отчетов по магазину за указанный промежуток времени с фильтрацией по типу
+  * Получить список отчетов по контракту за указанный промежуток времени с фильтрацией по типу
   * В случае если список report_types пустой, фильтрации по типу не будет
   * Возвращает список отчетов или пустой список, если отчеты по магазину не найдены
   *
@@ -85,10 +87,10 @@ service Reporting {
   * Возвращает идентификатор отчета
   *
   * PartyNotFound, если party не найден
-  * ShopNotFound, если shop не найден
+  * ContractNotFound, если contract не найден
   * InvalidRequest, если промежуток времени некорректен
   */
-  ReportID GenerateReport(1: ReportRequest request, 2: ReportType report_type) throws (1: PartyNotFound ex1, 2: ShopNotFound ex2, 3: InvalidRequest ex3)
+  ReportID GenerateReport(1: ReportRequest request, 2: ReportType report_type) throws (1: PartyNotFound ex1, 2: ContractNotFound ex2, 3: InvalidRequest ex3)
 
   /**
   * Запрос на получение отчета
