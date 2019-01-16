@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>fistful-reporter-proto</artifactId>
-    <version>1.2-e558883</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>fistful-reporter-proto</name>
@@ -19,11 +19,9 @@
     </description>
 
     <properties>
-        <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <file.storage.proto.version>1.19-13d8e22</file.storage.proto.version>
         <damsel.version>1.268-45c8524</damsel.version>
-        <javax.annotation.version>1.3.2</javax.annotation.version>
+        <file.storage.proto.version>1.19-13d8e22</file.storage.proto.version>
     </properties>
 
     <dependencies>
@@ -42,11 +40,6 @@
             <groupId>com.rbkmoney</groupId>
             <artifactId>file-storage-proto</artifactId>
             <version>${file.storage.proto.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>${javax.annotation.version}</version>
         </dependency>
     </dependencies>
 
