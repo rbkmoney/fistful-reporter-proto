@@ -1,5 +1,6 @@
 include "base.thrift"
 include "domain.thrift"
+include "file_storage.thrift"
 
 namespace java com.rbkmoney.fistful.reporter
 namespace erlang fistful_reporter
@@ -7,7 +8,7 @@ namespace erlang fistful_reporter
 typedef base.Timestamp Timestamp
 typedef base.InvalidRequest InvalidRequest
 typedef i64 ReportID
-typedef base.ID FileID
+typedef file_storage.FileDataId FileDataID
 typedef domain.PartyID PartyID
 typedef domain.ContractID ContractID
 typedef string ReportType
@@ -23,7 +24,6 @@ exception DatasetTooBig {
 exception PartyNotFound {}
 exception ContractNotFound {}
 exception ReportNotFound {}
-exception FileNotFound {}
 
 struct ReportRequest {
     1: required PartyID party_id
@@ -47,7 +47,7 @@ struct ReportTimeRange {
 * report_id - уникальный идентификатор отчета
 * time_range - за какой период данный отчет
 * report_type - тип отчета
-* file_ids - id файлов данного отчета
+* file_data_ids - id файлов данного отчета
 */
 struct Report {
     1: required ReportID report_id
@@ -55,7 +55,7 @@ struct Report {
     3: required Timestamp created_at
     4: required ReportType report_type
     5: required ReportStatus status
-    6: optional list<FileID> file_ids
+    6: optional list<FileDataID> file_data_ids
 }
 
 /**
