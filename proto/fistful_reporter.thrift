@@ -5,7 +5,7 @@ namespace erlang fistful_reporter
 
 typedef base.Timestamp Timestamp
 typedef i64 ReportID
-typedef base.ID FileID
+typedef base.ID FileDataID
 typedef base.ID PartyID
 typedef base.ID ContractID
 typedef string ReportType
@@ -29,7 +29,6 @@ exception DatasetTooBig {
 exception PartyNotFound {}
 exception ContractNotFound {}
 exception ReportNotFound {}
-exception FileNotFound {}
 
 struct ReportRequest {
     1: required PartyID party_id
@@ -53,7 +52,7 @@ struct ReportTimeRange {
 * report_id - уникальный идентификатор отчета
 * time_range - за какой период данный отчет
 * report_type - тип отчета
-* file_ids - id файлов данного отчета
+* file_data_ids - id файлов данного отчета
 */
 struct Report {
     1: required ReportID report_id
@@ -61,7 +60,7 @@ struct Report {
     3: required Timestamp created_at
     4: required ReportType report_type
     5: required ReportStatus status
-    6: optional list<FileID> file_ids
+    6: optional list<FileDataID> file_data_ids
 }
 
 /**

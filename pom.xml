@@ -20,6 +20,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <damsel.version>1.268-45c8524</damsel.version>
+        <file.storage.proto.version>1.19-13d8e22</file.storage.proto.version>
     </properties>
 
     <dependencies>
@@ -32,7 +34,12 @@
         <dependency>
             <groupId>com.rbkmoney</groupId>
             <artifactId>damsel</artifactId>
-            <version>1.268-45c8524</version>
+            <version>${damsel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.rbkmoney</groupId>
+            <artifactId>file-storage-proto</artifactId>
+            <version>${file.storage.proto.version}</version>
         </dependency>
     </dependencies>
 
