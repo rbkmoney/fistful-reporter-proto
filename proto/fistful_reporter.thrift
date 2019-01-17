@@ -6,7 +6,6 @@ namespace java com.rbkmoney.fistful.reporter
 namespace erlang fistful_reporter
 
 typedef base.Timestamp Timestamp
-typedef base.InvalidRequest InvalidRequest
 typedef file_storage.FileDataID FileDataID
 typedef domain.PartyID PartyID
 typedef domain.ContractID ContractID
@@ -24,6 +23,13 @@ exception DatasetTooBig {
 exception PartyNotFound {}
 exception ContractNotFound {}
 exception ReportNotFound {}
+/**
+ * Исключение, сигнализирующее о непригодных с точки зрения бизнес-логики входных данных
+ */
+exception InvalidRequest {
+    /** Список пригодных для восприятия человеком ошибок во входных данных */
+    1: required list<string> errors
+}
 
 struct ReportRequest {
     1: required PartyID party_id
