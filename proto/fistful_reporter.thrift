@@ -1,16 +1,22 @@
 include "base.thrift"
-include "domain.thrift"
 
 namespace java com.rbkmoney.fistful.reporter
 namespace erlang fistful_reporter
 
 typedef base.Timestamp Timestamp
-typedef base.InvalidRequest InvalidRequest
 typedef i64 ReportID
 typedef base.ID FileID
-typedef domain.PartyID PartyID
-typedef domain.ContractID ContractID
+typedef base.ID PartyID
+typedef base.ID ContractID
 typedef string ReportType
+
+/**
+ * Исключение, сигнализирующее о непригодных с точки зрения бизнес-логики входных данных
+ */
+exception InvalidRequest {
+    /** Список пригодных для восприятия человеком ошибок во входных данных */
+    1: required list<string> errors
+}
 
 /**
 * Ошибка превышения максимального размера блока данных, доступного для отправки клиенту.

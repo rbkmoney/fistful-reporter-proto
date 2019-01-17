@@ -12,7 +12,7 @@ SERVICE_NAME := fistful_reporter_proto
 # Build image tag to be used
 BUILD_IMAGE_TAG := 55e987e74e9457191a5b4a7c5dc9e3838ae82d2b
 CALL_ANYWHERE := \
-	all submodules compile clean distclean \
+all submodules rebar-update compile clean distclean \
 	java.compile java.deploy
 
 CALL_W_CONTAINER := $(CALL_ANYWHERE)
@@ -30,6 +30,9 @@ $(SUBTARGETS): %/.git: %
 
 submodules: $(SUBTARGETS)
 
+rebar-update:
+	$(REBAR) update
+
 compile:
 	$(REBAR) compile
 
@@ -38,7 +41,7 @@ clean:
 
 distclean:
 	$(REBAR) clean -a
-	rm -rfv _build
+	rm -rfv _build _builds _cache _steps _temp
 
 # Java
 

@@ -5,8 +5,11 @@ deps
 *.o
 *.beam
 *.plt
+*.hrl
+*.erl
 erl_crash.dump
 ebin/*.beam
+_build/
 rel/example_project
 .concrete/DEV_MODE
 .rebar
